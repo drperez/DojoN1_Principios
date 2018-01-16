@@ -20,6 +20,7 @@ public class GildedRoseTest {
     public void decrementarItemSulfuras(){
       GildedRose app = new GildedRose(this.items);
       Item item = app.decrementarSellInSulfuras(app.items[0]);
+      
       assertEquals(0, item.sellIn);
       assertEquals("Sulfuras, Hand of Ragnaros", item.name);
     }
