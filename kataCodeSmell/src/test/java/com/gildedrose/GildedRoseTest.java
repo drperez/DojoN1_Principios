@@ -6,22 +6,19 @@ import org.junit.Test;
 
 public class GildedRoseTest {
 
-  Item[] items = new Item[]{ new Item("Sulfuras, Hand of Ragnaros", 1, 1) };
-
     @Test
-    public void foo() {
-        Item[] items = new Item[] { new Item("fixme", 0, 0) };
+    public void decrementQualityAndSellInByOne() {
+        Item[] items = new Item[] { new Item("+5 Dexterity Vest", 10, 10), new Item("Elixir of the Mongoose", 5, 7) };
         GildedRose app = new GildedRose(items);
         app.updateQuality();
-        assertEquals("fixme", app.items[0].name);
+
+        assertEquals("+5 Dexterity Vest", app.items[0].name);
+        assertEquals(9, app.items[0].sellIn);
+        assertEquals(9, app.items[0].quality);
+        
+        assertEquals("Elixir of the Mongoose", app.items[1].name);
+        assertEquals(4, app.items[1].sellIn);
+        assertEquals(6, app.items[1].quality);
     }
 
-    @Test
-    public void decrementarItemSulfuras(){
-      GildedRose app = new GildedRose(this.items);
-      Item item = app.decrementarSellInSulfuras(app.items[0]);
-      
-      assertEquals(0, item.sellIn);
-      assertEquals("Sulfuras, Hand of Ragnaros", item.name);
-    }
 }
