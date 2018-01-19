@@ -67,4 +67,26 @@ public class GildedRoseTest {
         assertEquals(-2, item.sellIn);
         assertEquals(18, item.quality);
     }
+    
+    @Test
+    public void validateAgedBrieIncreaseInQualityWithTime() {
+        Item[] items = new Item[] { 
+                new Item("Aged Brie", 1, 5),
+                new Item("Aged Brie", -2, 4)};
+        
+        GildedRose app = new GildedRose(items);
+        app.updateQuality();
+        
+        Item itemOne = app.items[0];
+        
+        assertEquals("Aged Brie", itemOne.name);
+        assertEquals(0, itemOne.sellIn);
+        assertEquals(6, itemOne.quality);
+        
+        Item itemTwo = app.items[1];
+        
+        assertEquals("Aged Brie", itemTwo.name);
+        assertEquals(-3, itemTwo.sellIn);
+        assertEquals(6, itemTwo.quality);
+    }
 }
