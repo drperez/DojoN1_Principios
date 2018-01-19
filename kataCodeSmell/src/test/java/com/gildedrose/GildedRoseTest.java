@@ -52,4 +52,19 @@ public class GildedRoseTest {
         assertEquals(4, item.sellIn);
         assertEquals(50, item.quality);
     }
+    
+    @Test
+    public void validateQualityDegradesTwiceAsFast() {
+        Item[] items = new Item[] { 
+                new Item("+5 Dexterity Vest", -1, 20) };
+        
+        GildedRose app = new GildedRose(items);
+        app.updateQuality();
+        
+        Item item = app.items[0];
+        
+        assertEquals("+5 Dexterity Vest", item.name);
+        assertEquals(-2, item.sellIn);
+        assertEquals(18, item.quality);
+    }
 }
