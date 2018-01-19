@@ -39,4 +39,17 @@ public class GildedRoseTest {
         assertNotEquals(-1, item.quality);
     }
     
+    @Test
+    public void validateQualityOfAnItemNoMajorToFifty() {
+        Item[] items = new Item[] { 
+                new Item("Backstage passes to a TAFKAL80ETC concert", 5, 50)};
+        GildedRose app = new GildedRose(items);
+        app.updateQuality();
+        
+        Item item = app.items[0];
+        
+        assertEquals("Backstage passes to a TAFKAL80ETC concert", item.name);
+        assertEquals(4, item.sellIn);
+        assertEquals(50, item.quality);
+    }
 }
