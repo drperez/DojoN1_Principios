@@ -1,6 +1,7 @@
 package com.gildedrose;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
 import org.junit.Test;
 
@@ -21,4 +22,21 @@ public class GildedRoseTest {
         assertEquals(6, app.items[1].quality);
     }
 
+    @Test
+    public void validateQualityOfAnItemNegative() {
+        Item[] items = new Item[] { 
+                new Item("+5 Dexterity Vest", -1, 0) };
+        
+        GildedRose app = new GildedRose(items);
+        app.updateQuality();
+        
+        Item item = app.items[0];
+        
+        assertEquals("+5 Dexterity Vest", app.items[0].name);
+        assertEquals(0, item.quality);
+        assertEquals(-2, item.sellIn);
+        
+        assertNotEquals(-1, item.quality);
+    }
+    
 }
