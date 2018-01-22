@@ -144,6 +144,22 @@ public class GildedRoseTest {
         assertEquals("Sulfuras, Hand of Ragnaros", item.name);
         assertEquals(5, item.sellIn);
         assertEquals(80, item.quality);
+        
+    }
+    
+    @Test
+    public void validateConjuredQualityIncrement() {
+        Item[] items = new Item[] { 
+                new Item("Conjured Mana Cake", 5, 10)};
+        GildedRose app = new GildedRose(items);
+        app.updateQuality();
+        
+        Item item = app.items[0];
+        
+        assertEquals("Conjured Mana Cake", item.name);
+        assertEquals(4, item.sellIn);
+        assertEquals(8, item.quality);
+        
     }
     
 }
